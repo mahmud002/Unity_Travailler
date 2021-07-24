@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+ {% block profileactive%}active{% endblock profileactive%}
+{% block title %} Profile{% endblock title %} 
+
+{% block body %}
+           <a href="{{user.profile.image}}">
+               <img class="proimg" src="{{user.profile.image}}" alt="John" style="width:100%">
+          </a>
+  <h1>{{user.username}}</h1>
+  <p>{{user.profile.address}}</p>
+  <p>{{user.profile.phone}}</p>
+   
+
+
+{% endblock body %}

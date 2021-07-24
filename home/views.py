@@ -16,10 +16,13 @@ def index (request):
 
 def profile (request):
 
-    print("Hi I am From View Profile")
-
-
-    return render(request,'home.html')
+    if request.user.is_authenticated:
+        data=Profile.objects.all()
+ 
+            
+        return render(request,'profile.html',{'data':data})
+    else:
+        return HttpResponse("Please Login First")
 
 def blog (request):
 
