@@ -26,10 +26,11 @@ def profile (request):
 
 def blog (request):
 
-    print("Hi I am From View Blog")
+   
+    data=Blog.objects.all()
 
-
-    return render(request,'blog.html')
+       
+    return render(request,'blog.html', {'data':data})
 def travle_list (request):
 
     print("Hi I am From View Blog")
