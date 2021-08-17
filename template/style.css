@@ -1,31 +1,4 @@
-.title{
-	color: rgba(204, 46, 46, 0.705);
-}
 
-
-
-
-.img{
-    width: 200px; /* width of container */
-    height: 200px; /* height of container */
-    object-fit: cover;
-	border-radius: 0%
-	
-	
-}
-.proimg{
-	border-radius: 50%;
-}
-img:hover {
-	box-shadow: 0 0 5px 5px rgba(0, 140, 186, 0.5);
-  }
-
-
-  button:hover {
-	opacity: 0.7;
-	box-shadow: 0 0 5px 5px rgba(0, 140, 186, 0.5);
-  }
-  
   
   /* Style the footer */
 .footer {
@@ -56,71 +29,6 @@ img:hover {
 
 
 
-.hero-image {
-	background: url(https://source.unsplash.com/1200x400) no-repeat   center center #505050;  
-	height: 50%;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	position: relative;
-  }
-
-.hero-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
- 
-.hero-text button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 10px 25px;
-  color: black;
-  background-color: #ddd;
-  text-align: center;
-  cursor: pointer;
-}
-
-.hero-text button:hover {
-  background-color: #555;
-  color:#f8f9fa;
-}
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #333;
-  }
-  
-  li {
-	float: left;
-  }
-  .w3-content{
-	background-color: #f8f9fa;
-  }
-  li a {
-	display: block;
-	color: #f8f9fa;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-  }
-  
-  li a:hover {
-	background-color: #111;
-  }
-
-  .header {
-	padding: 30px;
-	font-size: 40px;
-	text-align: center;
-	background: white;
-  }
   
   /* Create two unequal columns that floats next to each other */
   /* Left column */
