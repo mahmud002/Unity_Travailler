@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %} Help{% endblock title %} 
+{% block body %}
+
+
+<div class="header">
+  <h2>Blog Name</h2>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>{{temp.title}}</h2>
+      <h5>{{temp.pub_date}}</h5>
+      <a href="{{temp.image}}">
+      <img class="img" src="{{temp.image}}"alt="5 Terre" style="  display: block;
+               margin-left: auto;
+                  margin-right: auto;
+                    width: auto;">
+          </a>
+      <p>{{temp.intro}}</p>
+      <p>{{temp.post}}</p>
+      	</br></br></br>
+        <h3>Comments</h3>
+        <hr>
+
+
+      <form action="/comment" method ="post" id="Systemform2" >
+     {% csrf_token %}
+       <label for="fname">First Name</label>
+        <input type="text" id="fname" name="comment">
+     <button type="Submit" class="btn"name="System2" value="{{temp.id}}" form="Systemform2" class="read_more">read more</button>
+    </form>
+
+  <h4>My Comments</h4>
+  {% for c in a %}
+{%if c.user == user.profile.user %}
+<p><b>{{c.user}}</b></p>
+<p>{{c.post}}</p>
+<p>{{c.pub_date}}</p>
+
+
+<form action="/delete_comment" method ="post" id="commentform" >
+     {% csrf_token %}
+    <button type="Submit" name="Comment" value="{{c}}" form="commentform" class="btn">Delete</button>
+    </form>
+ {% endif %}
+<div>
+</div>
+{% endfor %}
+  </br></br></br>
+<h4>Others Comments</h4>
+ {% for c in a %}
+
+<p><b>{{c.user}}</b></p>
+<p>{{c.post}}</p>
+<p>{{c.pub_date}}</p>
+
+<div>
+</div>
+{% endfor %}
+
+
+    </div>
+    
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>Author</h2>
+
+      <img class="proimg" src="{{temp2.image}}" alt="John" style="width:100%">
+      <h1>{{temp.username}}</h1>
+
+           <form action="/profile2" method ="post" id="Systemform" >
+     {% csrf_token %}
+     
+     <button type="Submit" name="System" value="{{temp.username}}" form="Systemform" class="btn">See More</button>
+     </form>
+
+    </div>
+
+  
+  </div>
+</div>
+
+    {% endblock body %}

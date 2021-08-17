@@ -31,6 +31,59 @@ def blog (request):
 
        
     return render(request,'blog.html', {'data':data})
+def blog_details (request):
+    if request.user.is_authenticated:
+        pk=request.POST.get('System2')
+        
+        data=Blog.objects.all()
+        data2=Profile.objects.all()
+        data3=Comment.objects.all()
+        a=[]
+        for temp in data:
+            id=str(temp.id)
+
+            if pk == id:
+                for temp3 in data3:
+                    c1=str(temp3.blog)
+                    c2=str(temp)
+                    if c1==c2:
+                        a.append(temp3)
+ 
+                for temp2 in data2:
+                    s1=str(temp.username)
+                    s2=str(temp2.user)
+                    print(s1)
+                    print(s2)
+                    if s1==s2:
+                
+                
+                        return render(request,'blog_details.html',{'temp':temp,'temp2':temp2,'a':a})
+                
+    else:
+        return HttpResponse("Please Login First")
+
+
+def comment (request):
+        
+        if request.user.is_authenticated:
+            pk=request.POST.get('System2')
+           
+            cmt=request.POST.get('comment')
+          
+            data=Blog.objects.all()
+            for temp in data:
+                s=str(temp.id)
+                if s==pk:
+                    id2=temp
+            blog=id2
+            post=cmt
+            user=request.user
+            new_post=Comment(blog=blog, post=post, user=user)
+            new_post.save()
+         
+            return redirect('blog')
+        else:
+            return HttpResponse("Please Login First") 
 def travle_list (request):
 
     print("Hi I am From View Blog")
