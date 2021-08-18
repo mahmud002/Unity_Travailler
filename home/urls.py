@@ -12,11 +12,11 @@ urlpatterns = [
     path("blog",views.blog, name='blog'),
     path("blog_details",views.blog_details, name='blog_details'),
     path("comment",views.comment, name='comment'),
-    path("travle_list",views.travle_list, name='travle_list'),
     path("login",views.login, name='login'),
     path("logout",views.logout, name='logout'),
     path("signup",views.signup, name='signup'),
-    path("profile",views.profile, name='profile')
+    path("profile",views.profile, name='profile'),
+    path("event",views.event, name='event')
    
 
     

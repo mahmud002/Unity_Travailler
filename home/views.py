@@ -95,12 +95,12 @@ def comment (request):
             return redirect('blog')
         else:
             return HttpResponse("Please Login First") 
-def travle_list (request):
+def event(request):
+    data=Event.objects.all()
+    print(data)
+    print("-------------------------------------------------------------------------")
 
-    print("Hi I am From View Blog")
-
-
-    return render(request,'travle_list.html')
+    return render(request,'travle_list.html', {'data':data})
 
 
 ##Login Logout
