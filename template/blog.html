@@ -140,6 +140,11 @@
           <p class="mt-1 text-xs text-gray-600">9 minutes read</p>
         </div>
       </section>
+        <form action="/blog_details" method ="post" id="Systemform2" >
+     {% csrf_token %}
+     
+     <button type="Submit" class="fullbtn"name="System2" value="{{temp.id}}" form="Systemform2" class="read_more">read more</button>
+    </form>
     </div>
   </div>
 {% endfor %}
