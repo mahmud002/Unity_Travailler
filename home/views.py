@@ -29,9 +29,25 @@ def profile (request):
 
     if request.user.is_authenticated:
         data=Profile.objects.all()
- 
+        data2=Blog.objects.all()
+        data3=Event.objects.all()
+        c=Comment.objects.all()
+        a=[]
+        b=[]
+        
+        for temp in data2:
+            s=str(temp.username)
+            if s==str(request.user.username):
+                a.append(temp)
+        print(a)
+           
             
-        return render(request,'profile.html',{'data':data})
+        for temp in data3:
+            s=str(temp.username)
+            if s==request.user.username:
+                b.append(temp)     
+            
+        return render(request,'profile.html',{'data':data, 'a':a})
     else:
         return HttpResponse("Please Login First")
 
@@ -42,6 +58,19 @@ def blog (request):
 
        
     return render(request,'blog.html', {'data':data})
+def delete_blog (request):
+        if request.user.is_authenticated:
+            target=request.POST.get('System')
+            print("__________________________________________________________")
+            print(target)
+            data=Blog.objects.all()
+            for temp in data:
+                s=str(temp)
+                if s==target:
+                    temp.delete()
+            return redirect('profile')
+        else:
+            return HttpResponse("Please Login First")
 def blog_details (request):
     if request.user.is_authenticated:
         pk=request.POST.get('System2')
