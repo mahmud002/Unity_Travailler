@@ -34,7 +34,8 @@ class Comment(models.Model):
 
 class Event(models.Model):
    
-    username=models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
+    ##username=models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
+    username=models.ManyToManyField(Profile)
     title=models.TextField(max_length=30, blank=True)
     intro=models.TextField(max_length=100, blank=True)
     post=models.TextField(max_length=2000, blank=True)

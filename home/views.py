@@ -23,18 +23,18 @@ import datetime
 # Create your views here.
 def index (request):
     data=Blog.objects.all()
-    i=0;
+    i=0
     a=[]
     for temp in data:
         if i>2:
-            break;
+            break
         a.append(temp)
             
    
   
 
     print("Hi I am From View")
-    return render(request,'home.html',{'data':a[0],'data1':a[1]})
+    return render(request,'home.html',{'data':a[0]})
 
 def profile (request):
 
