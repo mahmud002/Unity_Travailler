@@ -41,3 +41,17 @@ class Event(models.Model):
     post=models.TextField(max_length=2000, blank=True)
     pub_date=models.DateTimeField(auto_now_add=True)
     image=models.ImageField(upload_to="home/images", default="",null=True, blank=True)
+
+
+
+class EventGelary(models.Model):
+   
+    ##username=models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
+    event=models.OneToOneField(Event, null=True, on_delete=models.CASCADE)
+
+
+class EventImage(models.Model):
+   
+    ##username=models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
+    gelary=models.ForeignKey(EventGelary, null=True, on_delete=models.CASCADE)
+    image=models.ImageField(upload_to="home/images", default="",null=True, blank=True)

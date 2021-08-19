@@ -170,7 +170,10 @@ def event(request):
     print("-------------------------------------------------------------------------")
 
     return render(request,'travle_list.html', {'data':data})
+def event_gelary(request):
+    data=EventImage.objects.all()
 
+    return render(request,'event_gelary.html',{'data':data})
 
 ##Login Logout
 def login (request):
