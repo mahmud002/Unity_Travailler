@@ -14,6 +14,7 @@ urlpatterns = [
     path("delete_blog",views.delete_blog, name='delete_blog'),
     path("blog_form",views.blog_form, name='blog_form'),
     path("comment",views.comment, name='comment'),
+    path("delete_comment",views.delete_comment, name='delete_comment'),
     path("login",views.login, name='login'),
     path("logout",views.logout, name='logout'),
     path("signup",views.signup, name='signup'),

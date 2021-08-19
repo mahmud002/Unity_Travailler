@@ -152,6 +152,18 @@ def comment (request):
             return redirect('blog')
         else:
             return HttpResponse("Please Login First") 
+def delete_comment (request):
+        if request.user.is_authenticated:
+            target=request.POST.get('Comment')
+            print(target)
+            data=Comment.objects.all()
+            for temp in data:
+                s=str(temp)
+                if s==target:
+                    temp.delete()
+            return redirect('blog')
+        else:
+            return HttpResponse("Please Login First")
 def event(request):
     data=Event.objects.all()
     print(data)
