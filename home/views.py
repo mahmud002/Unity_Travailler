@@ -1,4 +1,15 @@
+from home.form import BlogForm
 from django.shortcuts import render
+from django.forms.widgets import NullBooleanSelect
+from django.shortcuts import render ,HttpResponse,redirect
+from .models import *
+
+from django.contrib.auth import logout,authenticate, login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User,auth
+import datetime
+
+
 from django.forms.widgets import NullBooleanSelect
 from django.shortcuts import render ,HttpResponse,redirect
 from .models import *
@@ -58,6 +69,23 @@ def blog (request):
 
        
     return render(request,'blog.html', {'data':data})
+def blog_form (request):
+    if request.user.is_authenticated:       
+        form=BlogForm()
+        if request.method =='POST':
+            form=BlogForm(request.POST,request.FILES)
+            
+            if form.is_valid():
+                instance=form.save(commit=False)
+                print("User")
+                print(instance)
+                instance.username=request.user.profile
+                form.save()
+               
+            return redirect('blog')
+        return render(request,'blog_form.html',{'form':form})
+    else:
+        return HttpResponse("Please Login First")
 def delete_blog (request):
         if request.user.is_authenticated:
             target=request.POST.get('System')
