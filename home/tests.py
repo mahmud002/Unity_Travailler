@@ -31,6 +31,24 @@ class TestView(TestCase):
         response=self.client.get(reverse('blog'))
         self.assertTemplateUsed(response, 'blog.html')
 
+      
+    def test_profile(self):
+        client=Client()
+        response = client.get(reverse('profile'))
+        client.get('profile.html')
+
+    def test_blog_form(self):
+        client=Client()
+        response = client.get(reverse('blog_form'))
+        client.get('blog_form.html')
+
+    def test_blog_details(self):
+        client=Client()
+        response = client.get(reverse('blog_details'))
+        client.get('blog_details.html')
+
+
+
     def test_template_login(self):
         
         response=self.client.get(reverse('login'))
@@ -51,6 +69,12 @@ class TestView(TestCase):
     def test_blog_model(self):
         self.blog=Blog.objects.create(title='title1')
         self.assertEquals(str(self.blog),'title1')
+
+    def test_template_event(self):
+        
+        response=self.client.get(reverse('event'))
+        self.assertTemplateUsed(response, 'travle_list.html')
+
 
         
  
