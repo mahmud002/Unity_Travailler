@@ -1,3 +1,4 @@
+from django.urls.base import resolve
 from home.views import delete_blog
 from django.http import request, response
 from django.test import TestCase
@@ -23,7 +24,9 @@ import json
 # Create your tests here.
 
 class TestView(TestCase):
-    def test_template_blog(self):
+    def test_blog(self):
+        url=reverse('blog')
+        self.assertEquals(resolve(url).func, blog)
         
         response=self.client.get(reverse('blog'))
         self.assertTemplateUsed(response, 'blog.html')
@@ -43,6 +46,11 @@ class TestView(TestCase):
         
         response=self.client.get(reverse('event_gelary'))
         self.assertTemplateUsed(response, 'event_gelary.html')   
+    
+        
+
+
+
 
 
         
