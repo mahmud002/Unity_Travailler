@@ -47,6 +47,14 @@ class TestView(TestCase):
         response=self.client.get(reverse('event_gelary'))
         self.assertTemplateUsed(response, 'event_gelary.html')   
     
+    
+    def test_blog_model(self):
+        self.blog=Blog.objects.create(title='title1')
+        self.assertEquals(str(self.blog),'title1')
+
+        
+ 
+    
         
 
 
