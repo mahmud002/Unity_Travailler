@@ -89,6 +89,7 @@ def blog_form (request):
 def delete_blog (request):
         if request.user.is_authenticated:
             target=request.POST.get('System')
+            target=request
             print("__________________________________________________________")
             print(target)
             data=Blog.objects.all()
@@ -153,7 +154,7 @@ def comment (request):
         else:
             return HttpResponse("Please Login First") 
 def delete_comment (request):
-        if request.user.is_authenticated:
+        #if request.user.is_authenticated:
             target=request.POST.get('Comment')
             print(target)
             data=Comment.objects.all()
@@ -162,8 +163,8 @@ def delete_comment (request):
                 if s==target:
                     temp.delete()
             return redirect('blog')
-        else:
-            return HttpResponse("Please Login First")
+        #else:
+         #   return HttpResponse("Please Login First")
 def event(request):
     data=Event.objects.all()
     print(data)
