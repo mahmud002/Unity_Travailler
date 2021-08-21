@@ -37,22 +37,34 @@ class TestView(TestCase):
         response = client.get(reverse('profile'))
         client.get('profile.html')
 
+    def test_profile_url(self):
+        url=reverse('profile')
+        self.assertEquals(resolve(url).func, profile) 
+
     def test_blog_form(self):
         client=Client()
         response = client.get(reverse('blog_form'))
         client.get('blog_form.html')
+
+    def test_blog_form_url(self):
+        url=reverse('blog_form')
+        self.assertEquals(resolve(url).func, blog_form) 
 
     def test_blog_details(self):
         client=Client()
         response = client.get(reverse('blog_details'))
         client.get('blog_details.html')
 
+    def test_blog_details_url(self):
+        url=reverse('blog_details')
+        self.assertEquals(resolve(url).func, blog_details) 
+
 
 
     def test_template_login(self):
         
         response=self.client.get(reverse('login'))
-        self.assertTemplateUsed(response, 'login.html')    
+        self.assertTemplateUsed(response, 'login.html')
 
 
     def test_template_event(self):
@@ -60,10 +72,18 @@ class TestView(TestCase):
         response=self.client.get(reverse('event'))
         self.assertTemplateUsed(response, 'travle_list.html')
 
+    def test_event_url(self):
+        url=reverse('event')
+        self.assertEquals(resolve(url).func, event) 
+
     def test_template_event_gelary(self):
         
         response=self.client.get(reverse('event_gelary'))
-        self.assertTemplateUsed(response, 'event_gelary.html')   
+        self.assertTemplateUsed(response, 'event_gelary.html')  
+
+    def test_event_gelary_url(self):
+        url=reverse('event_gelary')
+        self.assertEquals(resolve(url).func, event_gelary) 
     
     
     def test_blog_model(self):
@@ -75,7 +95,9 @@ class TestView(TestCase):
         response=self.client.get(reverse('event'))
         self.assertTemplateUsed(response, 'travle_list.html')
 
-
+    def test_event_url(self):
+        url=reverse('event')
+        self.assertEquals(resolve(url).func, event) 
         
  
     
