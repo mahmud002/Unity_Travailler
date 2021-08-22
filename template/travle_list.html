@@ -26,7 +26,7 @@
           </div>
           <div class="flex items-center justify-between px-4 py-2 overflow-hidden">
             <span class="text-xs font-medium text-blue-600 uppercase">
-              Web Programming
+              {{temp.title}}
             </span>
             <div class="flex flex-row items-center">
               <div
@@ -100,7 +100,7 @@
           <div class="flex flex-wrap items-center flex-1 px-4 py-1 text-center mx-auto">
             <a href="#" class="hover:underline">
               <h2 class="text-2xl font-bold tracking-normal text-gray-800">
-                Ho to Yawn in 7 Days
+               {{temp.intro}}
               </h2>
             </a>
           </div>
@@ -108,10 +108,7 @@
           <p
             class="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, magni
-            fugiat, odit incidunt necessitatibus aut nesciunt exercitationem aliquam
-            id voluptatibus quisquam maiores officia sit amet accusantium aliquid
-            quo obcaecati quasi.
+           {{temp.post}}
           </p>
           <hr class="border-gray-300" />
           <section class="px-4 py-2 mt-2">
@@ -124,9 +121,9 @@
                 />
                 <div class="flex flex-col mx-2">
                   <a href="" class="font-semibold text-gray-700 hover:underline">
-                    Fajrian Aidil Pratama
+                   Nishi
                   </a>
-                  <span class="mx-1 text-xs text-gray-600">28 Sep 2020</span>
+                  <span class="mx-1 text-xs text-gray-600">{{temp.pub_date}}</span>
                 </div>
               </div>
               <p class="mt-1 text-xs text-gray-600">9 minutes read</p>

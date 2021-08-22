@@ -23,15 +23,15 @@ class Blog(models.Model):
     post=models.TextField(max_length=2000, blank=True)
     pub_date=models.DateTimeField(auto_now_add=True)
     image=models.ImageField(upload_to="home/images", default="",null=True, blank=True)
-    def __str__(self):
-        return "%s" % (self.title)
+   
 class Comment(models.Model):
    
     user=models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     blog=models.ForeignKey(Blog, null=True, on_delete=models.CASCADE)
     post=models.TextField(max_length=200, blank=True)
     pub_date=models.DateTimeField(auto_now_add=True)
-
+    def __str__(self):
+        return "%s" % (self.post)
 
 class Event(models.Model):
    
@@ -42,7 +42,8 @@ class Event(models.Model):
     post=models.TextField(max_length=2000, blank=True)
     pub_date=models.DateTimeField(auto_now_add=True)
     image=models.ImageField(upload_to="home/images", default="",null=True, blank=True)
-
+    def __str__(self):
+        return "%s" % (self.title)
 
 
 class EventGelary(models.Model):

@@ -86,9 +86,9 @@ class TestView(TestCase):
         self.assertEquals(resolve(url).func, event_gelary) 
     
     
-    def test_blog_model(self):
-        self.blog=Blog.objects.create(title='title1')
-        self.assertEquals(str(self.blog),'title1')
+    ##def test_blog_model(self):
+     ##   self.blog=Blog.objects.create(title='title1')
+      ##  self.assertEquals(str(self.blog),'title1')
 
     def test_template_event(self):
         
@@ -99,10 +99,16 @@ class TestView(TestCase):
         url=reverse('event')
         self.assertEquals(resolve(url).func, event) 
         
- 
-    
-        
+    def test_Event_model(self):
+        self.event=Event.objects.create(title='title1')
+        self.assertEquals(str(self.event),'title1')
 
+    
+    def test_comment_model(self):
+        self.comment=Comment.objects.create(post='hi')
+        self.assertEquals(str(self.comment),'hi')
+
+    
 
 
 

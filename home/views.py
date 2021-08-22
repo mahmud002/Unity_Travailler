@@ -89,7 +89,7 @@ def blog_form (request):
 def delete_blog (request):
         if request.user.is_authenticated:
             target=request.POST.get('System')
-            target=request
+            
             print("__________________________________________________________")
             print(target)
             data=Blog.objects.all()
