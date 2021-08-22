@@ -86,9 +86,9 @@ class TestView(TestCase):
         self.assertEquals(resolve(url).func, event_gelary) 
     
     
-    ##def test_blog_model(self):
-     ##   self.blog=Blog.objects.create(title='title1')
-      ##  self.assertEquals(str(self.blog),'title1')
+    def test_blog_model(self):
+        self.blog=Blog.objects.create(title='title1')
+        self.assertEquals(str(self.blog),'title1')
 
     def test_template_event(self):
         
@@ -108,6 +108,71 @@ class TestView(TestCase):
         self.comment=Comment.objects.create(post='hi')
         self.assertEquals(str(self.comment),'hi')
 
+
+
+        #self.user=User.objects.create(username="mahmud", password="mahmud01")
+        #self.profile=Profile.objects.create(user=self.user)
+        
+
+        #self.blog1=Blog.objects.create(
+         #   username=self.profile,
+          #  title='hello'
+        #)
+
+
+        
+        
+    def test_view_comment_post(self):
+        self.client=Client()
+
+        self.comment=Comment.objects.create(post='this_is_comment')
+        self.list_url=('/comment')
+        response=self.client.post(self.list_url,{
+            'post':'this_is_comment'
+        })
+
+        self.assertEquals(response.status_code,200)
+        self.assertEquals(str(self.comment.post),'this_is_comment')
+
+        
+        
+    def test_view_comment_delete(self):
+        self.client=Client()
+
+        self.comment=Comment.objects.create(post='this_is_comment')
+        self.list_url=('/delete_comment')
+
+        response=self.client.delete(self.list_url,json.dumps({ 'id':1}))
+        
+        self.assertEquals(response.status_code,302)
+        
+
+    def test_view_blog_delete(self):
+        self.client=Client()
+
+        self.blog=Blog.objects.create(title='this_is_blog')
+        self.list_url=('/delete_blog')
+
+        response=self.client.delete(self.list_url,json.dumps({ 'id':1}))
+        
+        self.assertEquals(response.status_code,200)
+        #self.assertEquals(self.comment.count(),0)
+
+        
+    def test_view_Blog_post(self):
+        self.client=Client()
+
+        self.blog=Blog.objects.create(post='this_is_blog')
+        self.list_url=('/blog_form')
+        response=self.client.post(self.list_url,{
+            'post':'this_is_comment'
+        })
+
+        self.assertEquals(response.status_code,200)
+        self.assertEquals(str(self.blog.post),'this_is_blog')
+ 
+
+        
     
 
 

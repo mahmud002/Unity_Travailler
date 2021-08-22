@@ -6,19 +6,19 @@
 <main class="my-8">
     <div class="container mx-auto px-6">
         <h3 class="text-gray-700 text-2xl font-medium">Event Name</h3>
-        <span class="mt-3 text-sm text-gray-500">Date</span>
+        <span class="mt-3 text-sm text-gray-500"></span>
         
         <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
             {%for temp in data%}
-            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+            <a href="{{temp.image}}"><div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
                 <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('{{temp.image}}')">
 
                 </div>
                 <div class="px-5 py-3">
-                    <h3 class="text-gray-700 uppercase">Cox's Bazar</h3>
+                    <h3 class="text-gray-700 uppercase">{{temp.title}}</h3>
                     
                 </div>
-            </div>
+            </div></a>
 
             {%endfor%}
         </div>

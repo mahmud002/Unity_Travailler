@@ -23,6 +23,7 @@ import datetime
 # Create your views here.
 def index (request):
     data=Blog.objects.all()
+    data2=Profile.objects.all()
     i=0
     a=[]
     for temp in data:
@@ -31,10 +32,10 @@ def index (request):
         a.append(temp)
             
    
-  
+
 
     print("Hi I am From View")
-    return render(request,'home.html',{'data':a[0]})
+    return render(request,'home.html',{'data':a[0],'data2':data2})
 
 def profile (request):
 
