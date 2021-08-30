@@ -1,4 +1,4 @@
-from home.form import BlogForm
+from home.form import BlogForm, ProfileForm
 from django.shortcuts import render
 from django.forms.widgets import NullBooleanSelect
 from django.shortcuts import render ,HttpResponse,redirect
@@ -62,7 +62,15 @@ def profile (request):
         return render(request,'profile.html',{'data':data, 'a':a})
     else:
         return HttpResponse("Please Login First")
+def profile_form (request):
+    if request.user.is_authenticated: 
 
+
+
+
+        return render(request,'profile_form.html')
+    else:
+        return HttpResponse("Please Login First")
 def blog (request):
 
    
