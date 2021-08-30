@@ -62,15 +62,26 @@ def profile (request):
         return render(request,'profile.html',{'data':data, 'a':a})
     else:
         return HttpResponse("Please Login First")
-def profile_form (request):
-    if request.user.is_authenticated: 
+def edit_pro (request,id):
+        if request.user.is_authenticated:
+            
+            if request.method=='POST':
+                pi=Profile.objects.get(pk=id)
 
+                fm=ProfileForm(request.POST, request.FILES,instance=pi)
+                if fm.is_valid:
+                    fm.save()
+                    return redirect('profile')
 
+            else:
+                pi=Profile.objects.get(pk=id)
+                
+                fm=ProfileForm(instance=pi)
 
+            return render(request,'profile_form.html',{'form':fm})
 
-        return render(request,'profile_form.html')
-    else:
-        return HttpResponse("Please Login First")
+        else:
+            return HttpResponse("Please Login First")
 def blog (request):
 
    

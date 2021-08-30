@@ -1,1 +1,10 @@
-Profile form
+<h3>Profile Edit<h3>
+    <hr>
+    <form action="" method="post" enctype="multipart/form-data">
+       
+        {% csrf_token %}
+        {{form.as_p}}
+       
+        <input type="submit">
+    </form>
+    
