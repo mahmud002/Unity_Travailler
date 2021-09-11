@@ -338,6 +338,8 @@ def tour_leave (request):
             for temp in data:
                 if (str)(temp.event.id)==(str)(pk):
                     temp.delete()
+                    
+            
             
             
 
@@ -379,7 +381,7 @@ def image_delete (request):
             print("_______________________________________________")
             data=EventImage.objects.all()
             for temp in data:
-                s=str(temp.id)
+                s=str(temp)
                 if s==target:
                     temp.delete()
             return redirect('event')
