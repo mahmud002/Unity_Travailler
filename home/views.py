@@ -368,3 +368,20 @@ def blog_detail_view( request, pk):
 
 
     return HttpResponse("Please Login First")
+
+
+def image_delete (request):
+        if request.user.is_authenticated:
+            target=request.POST.get('Systemform8')
+            
+           
+            print(target)
+            print("_______________________________________________")
+            data=EventImage.objects.all()
+            for temp in data:
+                s=str(temp.id)
+                if s==target:
+                    temp.delete()
+            return redirect('event')
+        else:
+            return HttpResponse("Please Login First")

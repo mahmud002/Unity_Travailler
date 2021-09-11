@@ -18,6 +18,11 @@
                 </div>
                 <div class="px-5 py-3">
                     <h3 class="text-gray-700 uppercase">{{temp.title}}</h3>
+                            <form action="/image_delete" method ="post" id="Systemform8" >
+                            {% csrf_token %}
+     
+                            <button type="Submit" class="fullbtn"name="Systemform8" value="{{temp.id}}" form="Systemform8" class="read_more">Delete</button>
+                            </form>
                     
                 </div>
             </div></a>
