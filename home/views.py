@@ -34,7 +34,7 @@ def index (request):
    
 
 
-    print("Hi I am From View")
+    print("Hi I am From View with merge")
     return render(request,'home.html',{'data':a[0],'data2':data2})
 
 def profile (request):
