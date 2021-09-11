@@ -157,9 +157,17 @@ def tour_details (request):
         
         data=Event.objects.all()
         data2=Profile.objects.all()
+        data3=Member.objects.all()
      
         a=[]
+        b=[]
+        for temp in data3:
+            id= (str)(temp.event.id)
+            if id==pk:
+                b.append(temp)
+            
         for temp in data:
+           
             id=str(temp.id)
 
             if pk == id:
@@ -173,7 +181,7 @@ def tour_details (request):
                     if s1==s2:
                 
                 
-                        return render(request,'tour_details.html',{'temp':temp,'temp2':temp2})
+                        return render(request,'tour_details.html',{'temp':temp,'temp2':temp2,'temp3':b})
                 
     else:
         return HttpResponse("Please Login First")
