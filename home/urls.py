@@ -24,6 +24,13 @@ urlpatterns = [
     path("event_gelary",views.event_gelary, name='event_gelary'),
     path("tour_form",views.tour_form, name='tour_form'),
     path("tour_details",views.tour_details, name='tour_details'),
+    path("tour_join",views.tour_join, name='tour_join'),
+    path("tour_leave",views.tour_leave, name='tour_leave'),
+     path('blog-detail/<str:pk>/', views.blog_detail_view, name='blog-detail'),
+   
+   
+  
+
 
    
 

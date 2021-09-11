@@ -21,3 +21,8 @@ class TourForm(ModelForm):
         model = Event
         fields= '__all__'
         exclude=['username']
+class EventImageForm(ModelForm):
+    class Meta:
+        model = EventImage
+        fields= '__all__'
+        exclude=['gelary']

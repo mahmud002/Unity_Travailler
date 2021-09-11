@@ -1,4 +1,4 @@
-from home.form import BlogForm, ProfileForm, TourForm
+from home.form import BlogForm, EventImageForm, ProfileForm, TourForm
 from django.shortcuts import render
 from django.forms.widgets import NullBooleanSelect
 from django.shortcuts import render ,HttpResponse,redirect
@@ -120,6 +120,7 @@ def delete_blog (request):
             return redirect('profile')
         else:
             return HttpResponse("Please Login First")
+
 def blog_details (request):
     if request.user.is_authenticated:
         pk=request.POST.get('System2')
@@ -222,22 +223,36 @@ def delete_comment (request):
          #   return HttpResponse("Please Login First")
 def event(request):
     data=Event.objects.all()
-    print(data)
-   
+    data2=Member.objects.all()
+    a=[]
+    b=[]
+    for temp in data2:
+        s=(str)(temp.user)
+        s1=(request.user.username)
+        if(s==s1):
+            b.append(str(temp.event.id))
+         
+    for temp in data:
+        s=str(temp.username)
+        if s==str(request.user.username) or str(temp.id) in b:
+            a.append(temp)
+  
 
-    return render(request,'travle_list.html', {'data':data})
+    return render(request,'travle_list.html', {'data':a,'data2':data})
+
 def event_gelary(request):
     pk=request.POST.get('System2')
     a=[]
     data=EventImage.objects.all()
     print(type(pk))
+    z=str(pk)
     
     for temp in data:
         
         if pk==(str)(temp.gelary.id):
             a.append(temp)
-
-    return render(request,'event_gelary.html',{'data':a})
+    p=str(pk)
+    return render(request,'event_gelary.html',{'data':a,'pk':p})
 
 ##Login Logout
 def login (request):
@@ -290,3 +305,66 @@ def tour_form (request):
         return render(request,'tour_form.html',{'form':form})
     else:
         return HttpResponse("Please Login First")
+def tour_join (request):
+
+    if request.user.is_authenticated:       
+       
+        if request.method =='POST':
+            pk=request.POST.get('System5')
+            data=Event.objects.all()
+            
+            for a in data:
+                if (str)(a.id)==(str)(pk):
+                    temp=a
+                    reg = Member(event=temp,user=request.user.profile)
+                    print(reg)
+                    reg.save()
+           
+            
+
+            return redirect('event')
+        
+    else:
+        return HttpResponse("Please Login First")
+def tour_leave (request):
+
+    if request.user.is_authenticated:       
+       
+        if request.method =='POST':
+            pk=request.POST.get('System6')
+
+            data=Member.objects.all()
+
+            for temp in data:
+                if (str)(temp.event.id)==(str)(pk):
+                    temp.delete()
+            
+            
+
+            return redirect('event')
+        
+    else:
+        return HttpResponse("Please Login First")
+
+def blog_detail_view( request, pk):
+    p=str(pk)
+    data=Event.objects.all()
+    for temp in data:
+        if str(temp.id)==p:
+            print("this"+p)
+            print(temp)
+            form=EventImageForm()
+            if request.method =='POST':
+                form=EventImageForm(request.POST,request.FILES)
+            
+                if form.is_valid():
+                    instance=form.save(commit=False)
+            
+                    instance.gelary=temp
+                    form.save()
+               
+                    return redirect('event')
+            return render(request,'image_form.html',{'form':form})
+
+
+    return HttpResponse("Please Login First")
