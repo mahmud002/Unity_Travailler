@@ -21,7 +21,9 @@ urlpatterns = [
     path("signup",views.signup, name='signup'),
     path("profile",views.profile, name='profile'),
     path("event",views.event, name='event'),
-    path("event_gelary",views.event_gelary, name='event_gelary')
+    path("event_gelary",views.event_gelary, name='event_gelary'),
+    path("tour_form",views.tour_form, name='tour_form'),
+    path("tour_details",views.tour_details, name='tour_details'),
 
    
 

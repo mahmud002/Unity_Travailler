@@ -1,4 +1,4 @@
-from home.form import BlogForm, ProfileForm
+from home.form import BlogForm, ProfileForm, TourForm
 from django.shortcuts import render
 from django.forms.widgets import NullBooleanSelect
 from django.shortcuts import render ,HttpResponse,redirect
@@ -151,6 +151,33 @@ def blog_details (request):
     else:
         return HttpResponse("Please Login First")
 
+def tour_details (request):
+    if request.user.is_authenticated:
+        pk=request.POST.get('System2')
+        
+        data=Event.objects.all()
+        data2=Profile.objects.all()
+     
+        a=[]
+        for temp in data:
+            id=str(temp.id)
+
+            if pk == id:
+ 
+ 
+                for temp2 in data2:
+                    s1=str(temp.username)
+                    s2=str(temp2.user)
+                    print(s1)
+                    print(s2)
+                    if s1==s2:
+                
+                
+                        return render(request,'tour_details.html',{'temp':temp,'temp2':temp2})
+                
+    else:
+        return HttpResponse("Please Login First")
+
 
 def comment (request):
         
@@ -158,7 +185,7 @@ def comment (request):
             pk=request.POST.get('System2')
            
             cmt=request.POST.get('comment')
-          
+            print("Hello World")
             data=Blog.objects.all()
             for temp in data:
                 s=str(temp.id)
@@ -188,13 +215,21 @@ def delete_comment (request):
 def event(request):
     data=Event.objects.all()
     print(data)
-    print("-------------------------------------------------------------------------")
+   
 
     return render(request,'travle_list.html', {'data':data})
 def event_gelary(request):
+    pk=request.POST.get('System2')
+    a=[]
     data=EventImage.objects.all()
+    print(type(pk))
+    
+    for temp in data:
+        
+        if pk==(str)(temp.gelary.id):
+            a.append(temp)
 
-    return render(request,'event_gelary.html',{'data':data})
+    return render(request,'event_gelary.html',{'data':a})
 
 ##Login Logout
 def login (request):
@@ -228,3 +263,22 @@ def signup (request):
     else:
         form=UserCreationForm()
     return render (request,'singnup.html',{'form': form})
+
+def tour_form (request):
+
+    if request.user.is_authenticated:       
+        form=TourForm()
+        if request.method =='POST':
+            form=TourForm(request.POST,request.FILES)
+            
+            if form.is_valid():
+                instance=form.save(commit=False)
+                print("User")
+                print(instance)
+                instance.username=request.user.profile
+                form.save()
+               
+            return redirect('event')
+        return render(request,'tour_form.html',{'form':form})
+    else:
+        return HttpResponse("Please Login First")
