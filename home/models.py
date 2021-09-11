@@ -62,3 +62,11 @@ class EventImage(models.Model):
     gelary=models.ForeignKey(Event, null=True, on_delete=models.CASCADE)
     image=models.ImageField(upload_to="home/images", default="",null=True, blank=True)
     title=models.TextField(max_length=30, blank=True)
+
+
+class Member(models.Model):
+   
+    ##username=models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
+    event=models.ForeignKey(Event, null=True, on_delete=models.CASCADE)
+    user=models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
+ 
