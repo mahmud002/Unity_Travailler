@@ -15,3 +15,9 @@ class ProfileForm(ModelForm):
         model = Profile
         fields= '__all__'
         exclude=['user']
+
+class TourForm(ModelForm):
+    class Meta:
+        model = Event
+        fields= '__all__'
+        exclude=['username']

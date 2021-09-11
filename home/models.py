@@ -42,8 +42,8 @@ class Comment(models.Model):
 
 class Event(models.Model):
    
-    ##username=models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
-    username=models.ManyToManyField(Profile)
+    username=models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
+    ##username=models.ManyToManyField(Profile)
     title=models.TextField(max_length=30, blank=True)
     intro=models.TextField(max_length=100, blank=True)
     post=models.TextField(max_length=2000, blank=True)
@@ -53,15 +53,12 @@ class Event(models.Model):
         return "%s" % (self.title)
 
 
-class EventGelary(models.Model):
-   
-    ##username=models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
-    event=models.OneToOneField(Event, null=True, on_delete=models.CASCADE)
+
 
 
 class EventImage(models.Model):
    
     ##username=models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
-    gelary=models.ForeignKey(EventGelary, null=True, on_delete=models.CASCADE)
+    gelary=models.ForeignKey(Event, null=True, on_delete=models.CASCADE)
     image=models.ImageField(upload_to="home/images", default="",null=True, blank=True)
     title=models.TextField(max_length=30, blank=True)

@@ -3,7 +3,7 @@
 {% block active%}active{% endblock active%}
 {% block body %}
 
-
+<a href="/tour_form" class="btn">Create a new Tour</a>
 <section class="flex flex-row flex-wrap mx-auto">
     {% for temp in data %}
     <!-- Card Component -->
@@ -46,7 +46,7 @@
           </div>
           <hr class="border-gray-300" />
           <div class="flex flex-wrap items-center flex-1 px-4 py-1 text-center mx-auto">
-            <a href="#" class="hover:underline">
+            <a href="" class="hover:underline">
               <h2 class="text-2xl font-bold tracking-normal text-gray-800">
                {{temp.intro}}
               </h2>
@@ -77,6 +77,11 @@
               
             </div>
           </section>
+                  <form action="/tour_details" method ="post" id="Systemform2" >
+     {% csrf_token %}
+     
+     <button type="Submit" class="fullbtn"name="System2" value="{{temp.id}}" form="Systemform2" class="read_more">read more</button>
+    </form>
         </div>
       </div>
     {% endfor %}
