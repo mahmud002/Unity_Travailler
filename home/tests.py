@@ -59,6 +59,21 @@ class TestView(TestCase):
         url=reverse('blog_details')
         self.assertEquals(resolve(url).func, blog_details) 
 
+    def test_image_delete_url(self):
+        url=reverse('image_delete')
+        self.assertEquals(resolve(url).func, image_delete) 
+    def test_blog_details_url(self):
+        url=reverse('tour_leave')
+        self.assertEquals(resolve(url).func, tour_leave) 
+    def test_blog_details_url(self):
+        url=reverse('tour_join')
+        self.assertEquals(resolve(url).func, tour_join) 
+
+
+
+
+
+
 
 
     def test_template_login(self):

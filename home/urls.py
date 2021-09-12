@@ -26,8 +26,11 @@ urlpatterns = [
     path("tour_details",views.tour_details, name='tour_details'),
     path("tour_join",views.tour_join, name='tour_join'),
     path("tour_leave",views.tour_leave, name='tour_leave'),
+    path("tour_delete",views.tour_delete, name='tour_delete'),
     path('blog-detail/<str:pk>/', views.blog_detail_view, name='blog-detail'),
     path("image_delete",views.image_delete, name='image_delete'),
+    path('blog-detail2/<str:pk>/', views.blog_edit_view2, name='blog-detail2'),
+    path('blog-detail3/<str:pk>/', views.blog_edit_view3, name='blog-detail3'),
    
    
   

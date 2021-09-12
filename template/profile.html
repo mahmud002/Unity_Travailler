@@ -239,16 +239,19 @@
          
         </div>
       </section>
-        <form action="/blog_details" method ="post" id="Systemform2" >
+        <form action="/blog_details" method ="post" id="Systemform2" class="btn btn-success" >
      {% csrf_token %}
      
-     <button type="Submit" class="fullbtn"name="System2" value="{{temp.id}}" form="Systemform2" class="read_more">read more</button>
+     <button type="Submit" name="System2" value="{{temp.id}}" form="Systemform2" >read more</button>
     </form>
-        <form action="/delete_blog" method ="post" id="Systemform" >
+    <br><br>
+        <form action="/delete_blog" method ="post" id="Systemform" class="btn btn-success" >
      {% csrf_token %}
      
-     <button type="Submit" class="fullbtn"name="System" value="{{temp}}" form="Systemform" class="read_more">Delete</button>
+     <button type="Submit"name="System11" value="{{temp}}" form="Systemform" >Delete</button>
     </form>
+    <br><br>
+    <a class="btn btn-success" href="{% url 'blog-detail2' temp.id %}">Edit</a>
     </div>
 
   </div>

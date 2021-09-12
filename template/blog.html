@@ -5,7 +5,7 @@
 
 {% block body %}
 
-     <a href="/blog_form" class="btn">Create a new post</a>
+     <center><a href="/blog_form" class="btn btn-success">Create a new post</a></center>
 
 
 
@@ -78,7 +78,7 @@
         <form action="/blog_details" method ="post" id="Systemform2" >
      {% csrf_token %}
      
-     <button type="Submit" class="fullbtn"name="System2" value="{{temp.id}}" form="Systemform2" class="read_more">read more</button>
+     <button type="Submit" class="btn btn-success"name="System2" value="{{temp.id}}" form="Systemform2" class="read_more">read more</button>
     </form>
     </div>
   </div>

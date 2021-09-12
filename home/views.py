@@ -226,19 +226,25 @@ def event(request):
     data2=Member.objects.all()
     a=[]
     b=[]
+    c=[]
+    #all Event
     for temp in data2:
         s=(str)(temp.user)
         s1=(request.user.username)
         if(s==s1):
             b.append(str(temp.event.id))
-         
+    #my event
     for temp in data:
         s=str(temp.username)
-        if s==str(request.user.username) or str(temp.id) in b:
+        if  str(temp.id) in b:
             a.append(temp)
+    for temp in data:
+        s=str(temp.username)
+        if s==str(request.user.username) :
+            c.append(temp)
   
 
-    return render(request,'travle_list.html', {'data':a,'data2':data})
+    return render(request,'travle_list.html', {'data':a,'data2':data,'data3':c})
 
 def event_gelary(request):
     pk=request.POST.get('System2')
@@ -348,6 +354,30 @@ def tour_leave (request):
     else:
         return HttpResponse("Please Login First")
 
+
+def tour_delete (request):
+
+    if request.user.is_authenticated:       
+       
+        if request.method =='POST':
+            pk=request.POST.get('System10')
+
+            data=Event.objects.all()
+
+            for temp in data:
+                if (str)(temp.id)==(str)(pk):
+                    temp.delete()
+                    
+            
+            
+            
+
+            return redirect('event')
+        
+    else:
+        return HttpResponse("Please Login First")
+
+
 def blog_detail_view( request, pk):
     p=str(pk)
     data=Event.objects.all()
@@ -387,3 +417,43 @@ def image_delete (request):
             return redirect('event')
         else:
             return HttpResponse("Please Login First")
+
+
+def blog_edit_view2( request, pk):
+    p=str(pk)
+    print(p+"________________________________________________________________")
+    if request.method=='POST':
+                pi=Blog.objects.get(pk=pk)
+
+                fm=BlogForm(request.POST, request.FILES,instance=pi)
+                if fm.is_valid:
+                    fm.save()
+                    return redirect('profile')
+
+    else:
+                pi=Blog.objects.get(pk=pk)
+                
+                fm=BlogForm(instance=pi)
+
+    return render(request,'blog_form.html',{'form':fm})
+
+
+
+def blog_edit_view3( request, pk):
+    p=str(pk)
+    print(p+"________________________________________________________________")
+    if request.method=='POST':
+                pi=Event.objects.get(pk=pk)
+
+                fm=TourForm(request.POST, request.FILES,instance=pi)
+                if fm.is_valid:
+                    fm.save()
+                    return redirect('profile')
+
+    else:
+                pi=Event.objects.get(pk=pk)
+                
+                fm=TourForm(instance=pi)
+
+    return render(request,'tour_form.html',{'form':fm})
+
