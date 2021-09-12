@@ -244,7 +244,7 @@
         <form action="/delete_blog" method ="post" id="Systemform" class="btn btn-success" >
      {% csrf_token %}
      
-     <button type="Submit"name="System11" value="{{temp}}" form="Systemform" >Delete</button>
+     <button type="Submit"name="System" value="{{temp}}" form="Systemform" >Delete</button>
     </form>
     <br><br>
     <a class="btn btn-success" href="{% url 'blog-detail2' temp.id %}">Edit</a>

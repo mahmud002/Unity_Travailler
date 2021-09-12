@@ -110,7 +110,7 @@ def delete_blog (request):
         if request.user.is_authenticated:
             target=request.POST.get('System')
             
-            print("__________________________________________________________")
+            print("____________________________delete blog______________________________")
             print(target)
             data=Blog.objects.all()
             for temp in data:
