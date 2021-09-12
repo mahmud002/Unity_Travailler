@@ -403,10 +403,10 @@ def image_delete (request):
             
            
             print(target)
-            print("_______________________________________________")
+            print("______________________Image_________________________")
             data=EventImage.objects.all()
             for temp in data:
-                s=str(temp)
+                s=str(temp.id)
                 if s==target:
                     temp.delete()
             return redirect('event')
@@ -423,7 +423,7 @@ def blog_edit_view2( request, pk):
                 fm=BlogForm(request.POST, request.FILES,instance=pi)
                 if fm.is_valid:
                     fm.save()
-                    return redirect('profile')
+                    return redirect('blog')
 
     else:
                 pi=Blog.objects.get(pk=pk)
@@ -443,7 +443,7 @@ def blog_edit_view3( request, pk):
                 fm=TourForm(request.POST, request.FILES,instance=pi)
                 if fm.is_valid:
                     fm.save()
-                    return redirect('profile')
+                    return redirect('event')
 
     else:
                 pi=Event.objects.get(pk=pk)
