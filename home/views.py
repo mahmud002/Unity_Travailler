@@ -35,7 +35,7 @@ def index (request):
 
 
     print("Hi I am From View with merge")
-    return render(request,'home.html',{'data':a[0],'data2':data2})
+    return render(request,'home.html',{'data':a[0],'data2':data2,'data3':a[1]})
 
 def profile (request):
 
@@ -367,11 +367,6 @@ def tour_delete (request):
             for temp in data:
                 if (str)(temp.id)==(str)(pk):
                     temp.delete()
-                    
-            
-            
-            
-
             return redirect('event')
         
     else:
